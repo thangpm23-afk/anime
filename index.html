@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Anime Card Class</title>
+    <style>
+        body { font-family: Arial; max-width: 700px; margin: 20px auto; }
+        input, button { padding: 5px; margin: 5px; width: 100px; }
+    </style>
+</head>
+<body>
+    <h1>Chỉ số nhân vật</h1>
+
+    <!-- Nhập chỉ số cơ bản -->
+    DMG: <input type="number" id="basicDmg" value="10"><br>
+    HP: <input type="number" id="basicHp" value="100"><br>
+    Cấp: <input type="number" id="level" value="1"><br>
+
+    <button onclick="calcStats()">Tính chỉ số</button>
+
+    <pre id="resultStats"></pre>
+
+    <script>
+    function calcStats() {
+        let dmg = parseInt(document.getElementById("basicDmg").value);
+        let hp  = parseInt(document.getElementById("basicHp").value);
+        let level = parseInt(document.getElementById("level").value);
+
+        let basicMultiplier = Math.pow(1 + 0.0125, level - 1);
+        let basicDmgLevel = Math.round(dmg * basicMultiplier);
+        let basicHpLevel = Math.round(hp * basicMultiplier);
+
+        let goldDmg = basicDmgLevel * 4;
+        let goldHp  = basicHpLevel * 4;
+
+        let rainbowDmg = goldDmg * 4;
+        let rainbowHp  = goldHp * 4;
+
+        let secretDmg = rainbowDmg * 4;
+        let secretHp  = rainbowHp * 4;
+
+        document.getElementById("resultStats").innerText = 
+            `📌 Basic → DMG: ${basicDmgLevel}, HP: ${basicHpLevel}\n` +
+            `✨ Gold → DMG: ${goldDmg}, HP: ${goldHp}\n` +
+            `🌈 Rainbow → DMG: ${rainbowDmg}, HP: ${rainbowHp}\n` +
+            `🔥 Secret → DMG: ${secretDmg}, HP: ${secretHp}`;
+    }
+    </script>
+</body>
+</html>
