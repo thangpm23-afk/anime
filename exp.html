@@ -21,7 +21,8 @@
 <label>100 EXP:</label> <input type="number" id="book100" value="0"><br>
 <label>250 EXP:</label> <input type="number" id="book250" value="0"><br>
 <label>500 EXP:</label> <input type="number" id="book500" value="0"><br>
-<label>1000 EXP:</label> <input type="number" id="book1000" value="0"><br><br>
+<label>1000 EXP:</label> <input type="number" id="book1000" value="0"><br>
+<label>5000 EXP:</label> <input type="number" id="book5000" value="0"><br><br>
 
 <button onclick="calculateEXP()">Tính EXP & Số sách</button>
 <h3 id="result"></h3>
@@ -41,6 +42,7 @@ function calculateEXP() {
     document.getElementById('result').innerText = `Tổng EXP từ cấp ${start} → ${end}: ${totalEXP.toLocaleString()} EXP`;
 
     let books = [
+        {exp: 5000, count: parseInt(document.getElementById('book5000').value)},
         {exp: 1000, count: parseInt(document.getElementById('book1000').value)},
         {exp: 500, count: parseInt(document.getElementById('book500').value)},
         {exp: 250, count: parseInt(document.getElementById('book250').value)},
